@@ -99,7 +99,7 @@ Thinking Style: ${advisor.thinkingStyle}
 
 Respond to the question below from your unique perspective. Be specific, actionable, and grounded in your expertise. Keep your response focused and under 400 words.`;
 
-    const aiResponse = await fetch("https://ai-gateway.lovable.dev/chat/completions", {
+    const aiResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
