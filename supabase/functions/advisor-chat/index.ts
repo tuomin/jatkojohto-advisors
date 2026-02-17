@@ -80,9 +80,10 @@ Deno.serve(async (req) => {
           .eq("user_id", user.id);
       }
     } else {
+      // Use upsert to avoid duplicate key errors from concurrent requests
       await supabaseAdmin
         .from("advisor_usage")
-        .insert({ user_id: user.id, query_count: 1, reset_date: today });
+        .upsert({ user_id: user.id, query_count: 1, reset_date: today }, { onConflict: "user_id" });
     }
 
     // Call AI
