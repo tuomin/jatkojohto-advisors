@@ -68,13 +68,16 @@ export default function Index() {
           isLoading={isQuerying}
         />
 
-        <section className="space-y-4">
+        <section className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-medium text-white">Select 2–4 Advisors</h2>
-              <p className="text-xs text-white/60">{selectedAdvisors.length}/4 selected</p>
+              <h2 className="text-lg font-bold text-gray-900">Select Your Advisors</h2>
+              <p className="text-sm text-gray-600">Choose 2–4 advisors to analyze your question</p>
             </div>
-            <CustomAdvisorDialog onAdd={handleAddCustomAdvisor} />
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium text-primary">{selectedAdvisors.length}/4 selected</span>
+              <CustomAdvisorDialog onAdd={handleAddCustomAdvisor} />
+            </div>
           </div>
           <AdvisorSelector
             advisors={allAdvisors}

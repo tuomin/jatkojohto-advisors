@@ -10,17 +10,31 @@ export default function AdvisorCard({ advisor, isSelected, onToggle }: AdvisorCa
   return (
     <button
       onClick={() => onToggle(advisor)}
-      className={`text-left p-3 rounded-lg border transition-all ${
+      className={`text-left p-4 rounded-xl border transition-all ${
         isSelected
           ? "border-primary bg-primary/5 ring-1 ring-primary/30"
-          : "border-border hover:border-primary/40 bg-card"
+          : "border-gray-200 hover:border-gray-300 bg-white"
       }`}
     >
-      <div className="flex items-center gap-2 mb-1">
-        <span className="text-lg">{advisor.icon}</span>
-        <span className="text-sm font-medium text-card-foreground">{advisor.name}</span>
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex items-center gap-3 min-w-0">
+          <span className="text-2xl flex-shrink-0">{advisor.icon}</span>
+          <div className="min-w-0">
+            <span className="text-sm font-bold text-gray-900 block">{advisor.name}</span>
+            <span className="text-xs text-gray-500">{advisor.role}</span>
+          </div>
+        </div>
+        <div className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center mt-1 ${
+          isSelected ? "border-primary bg-primary" : "border-gray-300"
+        }`}>
+          {isSelected && (
+            <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          )}
+        </div>
       </div>
-      <p className="text-xs text-muted-foreground line-clamp-2">{advisor.role}</p>
+      <p className="text-xs text-gray-500 mt-2 line-clamp-2">{advisor.thinkingStyle}</p>
     </button>
   );
 }
