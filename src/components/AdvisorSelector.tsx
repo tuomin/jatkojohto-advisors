@@ -21,15 +21,15 @@ export default function AdvisorSelector({ advisors, selected, onToggle }: Adviso
 
   return (
     <div className="space-y-3">
-      <div className="flex gap-1 border-b border-border">
+      <div className="flex gap-1 border-b border-white/20">
         {CATEGORIES.map(cat => (
           <button
             key={cat.key}
             onClick={() => setActiveTab(cat.key)}
             className={`px-3 py-2 text-xs font-medium transition-colors border-b-2 -mb-px ${
               activeTab === cat.key
-                ? "border-primary text-primary"
-                : "border-transparent text-muted-foreground hover:text-foreground"
+                ? "border-white text-white"
+                : "border-transparent text-white/60 hover:text-white"
             }`}
           >
             {cat.label}

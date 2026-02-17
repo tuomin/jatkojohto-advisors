@@ -34,7 +34,7 @@ export default function QuestionInput({ onSubmit, disabled, isLoading }: Questio
         className="w-full rounded-lg border border-input bg-card px-4 py-3 text-sm text-card-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
       />
       <div className="flex items-center justify-between">
-        <p className="text-xs text-muted-foreground">⌘+Enter to submit</p>
+        <p className="text-xs text-white/60">⌘+Enter to submit</p>
         <button
           type="submit"
           disabled={disabled || !question.trim()}
