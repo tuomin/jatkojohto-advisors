@@ -20,24 +20,24 @@ export default function AdvisorSelector({ advisors, selected, onToggle }: Adviso
   const filtered = advisors.filter(a => a.category === activeTab);
 
   return (
-    <div className="space-y-3">
-      <div className="flex gap-1 border-b border-white/20">
+    <div className="space-y-4">
+      <div className="flex border-b border-gray-200">
         {CATEGORIES.map(cat => (
           <button
             key={cat.key}
             onClick={() => setActiveTab(cat.key)}
-            className={`px-3 py-2 text-xs font-medium transition-colors border-b-2 -mb-px ${
+            className={`flex-1 px-4 py-3 text-sm font-medium transition-colors border-b-2 -mb-px ${
               activeTab === cat.key
-                ? "border-white text-white"
-                : "border-transparent text-white/60 hover:text-white"
+                ? "border-gray-800 text-gray-900 bg-gray-100 rounded-t-lg"
+                : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
-            {cat.label}
+            {cat.label.split(' & ')[0]}
           </button>
         ))}
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {filtered.map(advisor => (
           <AdvisorCard
             key={advisor.id}
