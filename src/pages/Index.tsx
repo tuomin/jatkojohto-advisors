@@ -57,7 +57,7 @@ export default function Index() {
             Get diverse insights on your questions from multiple expert perspectives. Select your advisory panel and explore ideas, options, and alternatives.
           </p>
           <p className="text-white/50 text-xs mt-2">
-            Signed in as {session?.user?.email} · 5 queries per day
+            Signed in as {session?.user?.email} · 15 queries per day
           </p>
         </header>
 
