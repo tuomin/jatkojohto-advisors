@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import backgroundImage from "@/assets/background.jpg";
 
 export default function ResetPassword() {
   const navigate = useNavigate();
@@ -56,8 +57,12 @@ export default function ResetPassword() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-background px-4">
-      <div className="w-full max-w-sm space-y-6">
+    <main
+      className="min-h-screen flex items-center justify-center px-4 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="relative w-full max-w-sm space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold text-foreground">Reset Password</h1>
           <p className="text-muted-foreground text-sm">Enter your new password below</p>
