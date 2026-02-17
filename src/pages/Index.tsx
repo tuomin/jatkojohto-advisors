@@ -43,20 +43,31 @@ export default function Index() {
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="min-h-screen bg-black/50 backdrop-blur-[2px]">
-        <header className="border-b border-white/10 px-4 py-3 flex items-center justify-between">
-          <h1 className="text-lg font-bold text-white">Multi-Perspective AI Advisor</h1>
-          <div className="flex items-center gap-3">
-            <span className="text-xs text-white/70 hidden sm:inline">{session?.user?.email}</span>
-            <Link to="/admin" className="text-white/70 hover:text-white transition-colors" title="Admin">
-              <Shield className="h-4 w-4" />
+        <header className="px-6 py-8 text-center relative">
+          <div className="absolute top-4 right-4 flex items-center gap-2">
+            <Link to="/admin" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-colors text-sm font-medium">
+              <Shield className="h-4 w-4" /> Admin
             </Link>
-            <button onClick={signOut} className="text-white/70 hover:text-white transition-colors" title="Sign out">
-              <LogOut className="h-4 w-4" />
+            <button onClick={signOut} className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-colors text-sm font-medium">
+              <LogOut className="h-4 w-4" /> Sign Out
             </button>
           </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-white mt-4">Multi-Perspective Advisor</h1>
+          <p className="text-white/70 mt-3 max-w-2xl mx-auto text-sm md:text-base">
+            Get diverse insights on your questions from multiple expert perspectives. Select your advisory panel and explore ideas, options, and alternatives.
+          </p>
+          <p className="text-white/50 text-xs mt-2">
+            Signed in as {session?.user?.email} · 5 queries per day
+          </p>
         </header>
 
-      <div className="max-w-6xl mx-auto p-4 space-y-6">
+      <div className="max-w-4xl mx-auto px-4 pb-8 space-y-6">
+        <QuestionInput
+          onSubmit={handleAsk}
+          disabled={selectedAdvisors.length < 2 || isQuerying}
+          isLoading={isQuerying}
+        />
+
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
@@ -71,12 +82,6 @@ export default function Index() {
             onToggle={handleToggleAdvisor}
           />
         </section>
-
-        <QuestionInput
-          onSubmit={handleAsk}
-          disabled={selectedAdvisors.length < 2 || isQuerying}
-          isLoading={isQuerying}
-        />
 
         {responses.length > 0 && (
           <section className="space-y-4">
