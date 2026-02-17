@@ -60,8 +60,8 @@ export default function Index() {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-medium text-foreground">Select 2–4 Advisors</h2>
-              <p className="text-xs text-muted-foreground">{selectedAdvisors.length}/4 selected</p>
+              <h2 className="text-sm font-medium text-white">Select 2–4 Advisors</h2>
+              <p className="text-xs text-white/60">{selectedAdvisors.length}/4 selected</p>
             </div>
             <CustomAdvisorDialog onAdd={handleAddCustomAdvisor} />
           </div>
@@ -81,8 +81,8 @@ export default function Index() {
         {responses.length > 0 && (
           <section className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-medium text-foreground">Advisor Perspectives</h2>
-              <button onClick={clearResponses} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+              <h2 className="text-sm font-medium text-white">Advisor Perspectives</h2>
+              <button onClick={clearResponses} className="text-xs text-white/60 hover:text-white transition-colors">
                 Clear
               </button>
             </div>
