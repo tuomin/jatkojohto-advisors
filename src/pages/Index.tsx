@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useAdvisorChat } from "@/hooks/useAdvisorChat";
 import { PREDEFINED_ADVISORS, type Advisor } from "@/types/advisor";
@@ -6,7 +7,8 @@ import AdvisorSelector from "@/components/AdvisorSelector";
 import QuestionInput from "@/components/QuestionInput";
 import ResponseCard from "@/components/ResponseCard";
 import CustomAdvisorDialog from "@/components/CustomAdvisorDialog";
-import { LogOut } from "lucide-react";
+import { LogOut, Shield } from "lucide-react";
+import backgroundImage from "@/assets/background.jpg";
 
 export default function Index() {
   const { session, signOut } = useAuth();
@@ -36,16 +38,23 @@ export default function Index() {
   };
 
   return (
-    <main className="min-h-screen bg-background">
-      <header className="border-b border-border px-4 py-3 flex items-center justify-between">
-        <h1 className="text-lg font-bold text-foreground">Multi-Perspective AI Advisor</h1>
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-muted-foreground hidden sm:inline">{session?.user?.email}</span>
-          <button onClick={signOut} className="text-muted-foreground hover:text-foreground transition-colors" title="Sign out">
-            <LogOut className="h-4 w-4" />
-          </button>
-        </div>
-      </header>
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <div className="min-h-screen bg-black/50 backdrop-blur-[2px]">
+        <header className="border-b border-white/10 px-4 py-3 flex items-center justify-between">
+          <h1 className="text-lg font-bold text-white">Multi-Perspective AI Advisor</h1>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-white/70 hidden sm:inline">{session?.user?.email}</span>
+            <Link to="/admin" className="text-white/70 hover:text-white transition-colors" title="Admin">
+              <Shield className="h-4 w-4" />
+            </Link>
+            <button onClick={signOut} className="text-white/70 hover:text-white transition-colors" title="Sign out">
+              <LogOut className="h-4 w-4" />
+            </button>
+          </div>
+        </header>
 
       <div className="max-w-6xl mx-auto p-4 space-y-6">
         <section className="space-y-4">
@@ -89,6 +98,7 @@ export default function Index() {
           </section>
         )}
       </div>
-    </main>
+      </div>
+    </div>
   );
 }

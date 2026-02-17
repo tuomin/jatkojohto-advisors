@@ -3,6 +3,8 @@ import { Toaster } from "sonner";
 import { useAuth } from "@/hooks/useAuth";
 import Index from "@/pages/Index";
 import Auth from "@/pages/Auth";
+import ResetPassword from "@/pages/ResetPassword";
+import Admin from "@/pages/Admin";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth();
@@ -24,6 +26,8 @@ export default function App() {
       <Toaster position="top-center" richColors />
       <Routes>
         <Route path="/auth" element={<AuthRoute><Auth /></AuthRoute>} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
         <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
