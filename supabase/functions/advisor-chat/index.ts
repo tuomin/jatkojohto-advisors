@@ -54,6 +54,18 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Validate advisor field lengths to prevent abuse
+    const advisorLimits = { name: 50, role: 100, background: 500, thinkingStyle: 500 };
+    for (const [field, max] of Object.entries(advisorLimits)) {
+      const val = advisor[field];
+      if (typeof val === "string" && val.length > max) {
+        return new Response(JSON.stringify({ error: `Advisor ${field} exceeds ${max} characters` }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
     // Rate limiting
     const today = new Date().toISOString().split("T")[0];
     const { data: usage } = await supabaseAdmin

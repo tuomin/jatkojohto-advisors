@@ -59,6 +59,7 @@ export default function CustomAdvisorDialog({ onAdd }: CustomAdvisorDialogProps)
             onChange={e => setName(e.target.value)}
             placeholder="Name"
             required
+            maxLength={50}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
           />
           <input
@@ -66,6 +67,7 @@ export default function CustomAdvisorDialog({ onAdd }: CustomAdvisorDialogProps)
             onChange={e => setRole(e.target.value)}
             placeholder="Role / Title"
             required
+            maxLength={100}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
           />
           <textarea
@@ -73,6 +75,7 @@ export default function CustomAdvisorDialog({ onAdd }: CustomAdvisorDialogProps)
             onChange={e => setBackground(e.target.value)}
             placeholder="Background description..."
             required
+            maxLength={500}
             rows={2}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
           />
@@ -81,6 +84,7 @@ export default function CustomAdvisorDialog({ onAdd }: CustomAdvisorDialogProps)
             onChange={e => setThinkingStyle(e.target.value)}
             placeholder="Thinking style / approach..."
             required
+            maxLength={500}
             rows={2}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
           />
