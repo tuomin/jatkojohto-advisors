@@ -1,4 +1,4 @@
-# Jatkojohto Advisory
+# Jatkojohto Advisors
 
 A personal advisory and consulting website with a possibility to choose an "advisory board" for your proposal and/or idea. The app requires creation of a user account or Google log-in. No data is saved, but results of the query can be printed as a PDF. Built with [Lovable](https://lovable.dev) using React and Tailwind CSS.
 
