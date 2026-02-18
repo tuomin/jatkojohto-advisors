@@ -2,13 +2,13 @@
 
 A personal advisory and consulting website with a possibility to choose an "advisory board" for your proposal and/or idea. The app requires creation of a user account or Google log-in. No data is saved, but results of the query can be printed as a PDF. Built with [Lovable](https://lovable.dev) using React and Tailwind CSS.
 
-🌐 **Live site:** [jatkojohto-advisory.lovable.app](https://jatkojohto-advisory.lovable.app)
+🌐 **Live site:** [jatkojohto-advisors.lovable.app](https://jatkojohto-advisors.lovable.app)
 
 ---
 
 ## About
 
-Jatkojohto Advisory is the professional platform of **Tuomi Kariniemi**, a Finnish consultant and coach specialising in:
+Jatkojohto Advisors is the professional platform of **Tuomi Kariniemi**, a Finnish consultant and coach specialising in:
 
 - Change capability consulting
 - AI coaching, adoption and implementation
@@ -47,4 +47,4 @@ For professional enquiries, please reach out via the website or connect on [Link
 
 ---
 
-*© 2025 Tuomi Kariniemi. Built with Lovable.*
+*© 2026 Tuomi Kariniemi. Built with Lovable.*
