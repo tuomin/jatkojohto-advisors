@@ -73,3 +73,41 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-results {
+    background: white !important;
+    padding: 0 !important;
+  }
+
+  .print-results .print-card {
+    border: 1px solid #ddd !important;
+    background: white !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+    border-radius: 8px !important;
+  }
+
+  .print-results .print-card h3,
+  .print-results .print-card p,
+  .print-results .print-card div {
+    color: black !important;
+  }
+}

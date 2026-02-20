@@ -7,7 +7,7 @@ interface ResponseCardProps {
 
 export default function ResponseCard({ advisor, response }: ResponseCardProps) {
   return (
-    <div className="rounded-lg border border-border bg-card p-4 space-y-3">
+    <div className="print-card rounded-lg border border-border bg-card p-4 space-y-3">
       <div className="flex items-center gap-2">
         <span className="text-lg">{advisor.icon}</span>
         <div>
