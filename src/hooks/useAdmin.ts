@@ -14,15 +14,21 @@ export function useAdmin() {
   const { session } = useAuth();
   const [users, setUsers] = useState<AdminUser[]>([]);
   const [loading, setLoading] = useState(true);
+  const [checkingAdmin, setCheckingAdmin] = useState(true);
   const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
   const checkAdmin = useCallback(async () => {
-    if (!session?.user?.id) return;
+    if (!session?.user?.id) {
+      setCheckingAdmin(false);
+      return;
+    }
+    setCheckingAdmin(true);
     const { data } = await supabase.rpc("has_role", {
       _user_id: session.user.id,
       _role: "super_admin",
     });
     setIsSuperAdmin(!!data);
+    setCheckingAdmin(false);
   }, [session?.user?.id]);
 
   const fetchUsers = useCallback(async () => {
@@ -66,5 +72,5 @@ export function useAdmin() {
     if (isSuperAdmin) fetchUsers();
   }, [isSuperAdmin, fetchUsers]);
 
-  return { users, loading, isSuperAdmin, updatePassword, updateRole, fetchUsers };
+  return { users, loading, checkingAdmin, isSuperAdmin, updatePassword, updateRole, fetchUsers };
 }
