@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useIsSuperAdmin } from "@/hooks/useIsSuperAdmin";
 import { useAdvisorChat } from "@/hooks/useAdvisorChat";
 import { PREDEFINED_ADVISORS, type Advisor } from "@/types/advisor";
 import AdvisorSelector from "@/components/AdvisorSelector";
@@ -12,6 +13,7 @@ import backgroundImage from "@/assets/background.jpg";
 
 export default function Index() {
   const { session, signOut } = useAuth();
+  const { isSuperAdmin, checkingAdmin } = useIsSuperAdmin();
   const { responses, isQuerying, askAdvisors, clearResponses } = useAdvisorChat();
   const [selectedAdvisors, setSelectedAdvisors] = useState<Advisor[]>([]);
   const [allAdvisors, setAllAdvisors] = useState<Advisor[]>(PREDEFINED_ADVISORS);
@@ -47,10 +49,18 @@ export default function Index() {
       <div className="min-h-screen bg-black/50 backdrop-blur-[2px]">
         <header className="px-6 py-8 text-center relative no-print">
           <div className="absolute top-4 right-4 flex items-center gap-2">
-            <Link to="/admin" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-colors text-sm font-medium">
-              <Shield className="h-4 w-4" /> Admin
-            </Link>
-            <button onClick={signOut} className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-colors text-sm font-medium">
+            {!checkingAdmin && isSuperAdmin && (
+              <Link
+                to="/admin"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-colors text-sm font-medium"
+              >
+                <Shield className="h-4 w-4" /> Admin
+              </Link>
+            )}
+            <button
+              onClick={signOut}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-colors text-sm font-medium"
+            >
               <LogOut className="h-4 w-4" /> Sign Out
             </button>
           </div>
