@@ -11,13 +11,14 @@ interface AdminUser {
 }
 
 export function useAdmin() {
-  const { session } = useAuth();
+  const { session, loading: authLoading } = useAuth();
   const [users, setUsers] = useState<AdminUser[]>([]);
   const [loading, setLoading] = useState(true);
   const [checkingAdmin, setCheckingAdmin] = useState(true);
   const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
   const checkAdmin = useCallback(async () => {
+    if (authLoading) return; // wait for auth to settle
     if (!session?.user?.id) {
       setCheckingAdmin(false);
       return;
@@ -29,7 +30,7 @@ export function useAdmin() {
     });
     setIsSuperAdmin(!!data);
     setCheckingAdmin(false);
-  }, [session?.user?.id]);
+  }, [session?.user?.id, authLoading]);
 
   const fetchUsers = useCallback(async () => {
     if (!session?.access_token) return;
