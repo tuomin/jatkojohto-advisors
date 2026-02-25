@@ -2,7 +2,7 @@
 
 **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**
 
-Copyright © 2025 Tuomi Kariniemi
+Copyright © 2026 Tuomi Kariniemi
 
 ---
 
