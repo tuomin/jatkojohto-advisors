@@ -3,23 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig(({ mode }) => {
-  // Workaround: inject env vars directly if .env is not loaded
-  const env = {
-    VITE_SUPABASE_URL: process.env.VITE_SUPABASE_URL || "https://echkbdayvuevzfpdkxku.supabase.co",
-    VITE_SUPABASE_PUBLISHABLE_KEY: process.env.VITE_SUPABASE_PUBLISHABLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVjaGtiZGF5dnVldnpmcGRreGt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzMjUxNTQsImV4cCI6MjA4NjkwMTE1NH0.IWdfIrnogQ9kLBoQZMR2bYaPXMimJ1EEIMxOY3nM3Ik",
-    VITE_SUPABASE_PROJECT_ID: process.env.VITE_SUPABASE_PROJECT_ID || "echkbdayvuevzfpdkxku",
-  };
-
   return {
-    server: {
-      host: "::",
-      port: 8080,
-    },
-    define: {
-      'import.meta.env.VITE_SUPABASE_URL': JSON.stringify(env.VITE_SUPABASE_URL),
-      'import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY': JSON.stringify(env.VITE_SUPABASE_PUBLISHABLE_KEY),
-      'import.meta.env.VITE_SUPABASE_PROJECT_ID': JSON.stringify(env.VITE_SUPABASE_PROJECT_ID),
-    },
     plugins: [
       react(),
       mode === 'development' && import('lovable-tagger').then(m => m.componentTagger()),
