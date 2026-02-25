@@ -21,16 +21,26 @@ export default function Auth() {
 
     try {
       if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: { emailRedirectTo: window.location.origin },
         });
         if (error) throw error;
-        toast.success("Check your email for a verification link!");
+        if (!data.session) {
+          toast.success("Check your email for a verification link!");
+          setEmail("");
+          setPassword("");
+        }
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
+        if (error) {
+          if (error.message?.toLowerCase().includes("email not confirmed")) {
+            toast.error("Please verify your email address before signing in. Check your inbox for a verification link.");
+            return;
+          }
+          throw error;
+        }
       }
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : "An error occurred";
